@@ -295,6 +295,9 @@ class LacrosseTacticsBoard {
             case 'pass':
                 canvas.style.cursor = 'pointer';
                 break;
+            case 'delete':
+                canvas.style.cursor = 'not-allowed';
+                break;
         }
     }
 
@@ -494,6 +497,12 @@ class LacrosseTacticsBoard {
                 return;
             }
 
+            // Delete mode: click to delete player
+            if (this.currentTool === 'delete' && element.classList.contains('player')) {
+                this.deletePlayer(element);
+                return;
+            }
+
             // Pass mode: click a player to add pass waypoint from selected player
             if (this.currentTool === 'pass') {
                 if (this.selectedPlayerForWaypoint && element.dataset.id !== this.selectedPlayerForWaypoint) {
@@ -543,6 +552,12 @@ class LacrosseTacticsBoard {
                 this.selectedPlayerForWaypoint = element.dataset.id;
                 element.style.boxShadow = '0 0 15px 5px rgba(255, 255, 0, 0.8)';
                 this.drawWaypoints();
+                return;
+            }
+
+            // Delete mode: tap to delete player
+            if (this.currentTool === 'delete' && element.classList.contains('player')) {
+                this.deletePlayer(element);
                 return;
             }
 
