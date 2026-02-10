@@ -318,6 +318,9 @@ class LacrosseTacticsBoard {
             case 'add-goalie-blue':
                 this.addPlayer('goalie-blue');
                 break;
+            case 'add-fo-blue':
+                this.addPlayer('fo-blue');
+                break;
             case 'add-attack-red':
                 this.addPlayer('attack-red');
                 break;
@@ -332,6 +335,9 @@ class LacrosseTacticsBoard {
                 break;
             case 'add-goalie-red':
                 this.addPlayer('goalie-red');
+                break;
+            case 'add-fo-red':
+                this.addPlayer('fo-red');
                 break;
             case 'add-ball':
                 this.addBall();
@@ -367,6 +373,7 @@ class LacrosseTacticsBoard {
         else if (type.startsWith('defense')) label = 'D';
         else if (type.startsWith('ssdm')) label = 'SD';
         else if (type.startsWith('goalie')) label = 'G';
+        else if (type.startsWith('fo')) label = 'FO';
 
         player.textContent = label;
 
@@ -689,6 +696,7 @@ class LacrosseTacticsBoard {
         else if (type.startsWith('defense')) label = 'D';
         else if (type.startsWith('ssdm')) label = 'SD';
         else if (type.startsWith('goalie')) label = 'G';
+        else if (type.startsWith('fo')) label = 'FO';
 
         player.textContent = label;
         player.style.left = `${x}px`;

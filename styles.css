@@ -134,6 +134,10 @@ body {
     background: linear-gradient(135deg, #22d3ee, #06b6d4);
 }
 
+.player-btn.fo-blue {
+    background: linear-gradient(135deg, #a3e635, #65a30d);
+}
+
 /* Player Buttons - Red Team */
 .player-btn.attack-red {
     background: linear-gradient(135deg, #ef4444, #b91c1c);
@@ -153,6 +157,10 @@ body {
 
 .player-btn.goalie-red {
     background: linear-gradient(135deg, #10b981, #047857);
+}
+
+.player-btn.fo-red {
+    background: linear-gradient(135deg, #fbbf24, #b45309);
 }
 
 .player-btn .player-icon {
@@ -341,6 +349,13 @@ body {
     height: 42px;
 }
 
+.player.fo-blue {
+    background: linear-gradient(135deg, #a3e635, #65a30d);
+    border: 2px solid #bef264;
+    box-shadow: 0 2px 10px rgba(163, 230, 53, 0.5);
+    color: white;
+}
+
 /* Red Team Players */
 .player.attack-red {
     background: linear-gradient(135deg, #ef4444, #b91c1c);
@@ -377,6 +392,13 @@ body {
     color: white;
     width: 42px;
     height: 42px;
+}
+
+.player.fo-red {
+    background: linear-gradient(135deg, #fbbf24, #b45309);
+    border: 2px solid #fcd34d;
+    box-shadow: 0 2px 10px rgba(251, 191, 36, 0.5);
+    color: white;
 }
 
 .player.selected {
