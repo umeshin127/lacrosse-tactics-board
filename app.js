@@ -1218,5 +1218,11 @@ class LacrosseTacticsBoard {
 
 // Initialize app when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-    new LacrosseTacticsBoard();
+    try {
+        new LacrosseTacticsBoard();
+    } catch (e) {
+        console.error('初期化エラー:', e);
+        document.body.innerHTML = '<div style="color:white;padding:20px;text-align:center;">' +
+            '<h2>エラーが発生しました</h2><p>' + e.message + '</p></div>';
+    }
 });

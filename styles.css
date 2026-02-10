@@ -227,6 +227,10 @@ body {
     position: relative;
     width: 100%;
     max-width: 1000px;
+    /* Fallback for browsers without aspect-ratio support */
+    height: 0;
+    padding-bottom: 55.56%;
+    /* 1/1.8 = 55.56% */
     aspect-ratio: 1.8 / 1;
     background: var(--field-green);
     border-radius: 16px;
@@ -235,6 +239,14 @@ body {
         0 0 0 4px rgba(255, 255, 255, 0.1),
         0 20px 60px rgba(0, 0, 0, 0.5),
         inset 0 0 100px rgba(0, 0, 0, 0.3);
+}
+
+/* Reset height when aspect-ratio is supported */
+@supports (aspect-ratio: 1) {
+    .field-container {
+        height: auto;
+        padding-bottom: 0;
+    }
 }
 
 .field-container canvas {
