@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>ラクロス戦術ボード</title>
+    <meta name="description" content="ラクロスの戦術を考えるためのインタラクティブな戦術ボードアプリ">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+        <header class="header">
+            <h1>🥍 ラクロス戦術ボード</h1>
+        </header>
+
+        <div class="toolbar">
+            <div class="tool-group">
+                <span class="group-label">青チーム</span>
+                <button class="tool-btn player-btn attack-blue" data-action="add-attack-blue" title="アタック（青）">
+                    <span class="player-icon">AT</span>
+                </button>
+                <button class="tool-btn player-btn midfield-blue" data-action="add-midfield-blue" title="ミッドフィールダー（青）">
+                    <span class="player-icon">MD</span>
+                </button>
+                <button class="tool-btn player-btn defense-blue" data-action="add-defense-blue" title="ディフェンス（青）">
+                    <span class="player-icon">D</span>
+                </button>
+                <button class="tool-btn player-btn ssdm-blue" data-action="add-ssdm-blue" title="SSDM（青）">
+                    <span class="player-icon">SD</span>
+                </button>
+                <button class="tool-btn player-btn goalie-blue" data-action="add-goalie-blue" title="ゴーリー（青）">
+                    <span class="player-icon">G</span>
+                </button>
+            </div>
+
+            <div class="tool-group">
+                <span class="group-label">赤チーム</span>
+                <button class="tool-btn player-btn attack-red" data-action="add-attack-red" title="アタック（赤）">
+                    <span class="player-icon">AT</span>
+                </button>
+                <button class="tool-btn player-btn midfield-red" data-action="add-midfield-red" title="ミッドフィールダー（赤）">
+                    <span class="player-icon">MD</span>
+                </button>
+                <button class="tool-btn player-btn defense-red" data-action="add-defense-red" title="ディフェンス（赤）">
+                    <span class="player-icon">D</span>
+                </button>
+                <button class="tool-btn player-btn ssdm-red" data-action="add-ssdm-red" title="SSDM（赤）">
+                    <span class="player-icon">SD</span>
+                </button>
+                <button class="tool-btn player-btn goalie-red" data-action="add-goalie-red" title="ゴーリー（赤）">
+                    <span class="player-icon">G</span>
+                </button>
+            </div>
+
+            <div class="tool-group">
+                <button class="tool-btn ball-btn" data-action="add-ball" title="ボール追加">
+                    <span class="ball-icon">●</span>
+                </button>
+            </div>
+
+            <div class="tool-group">
+                <span class="group-label">描画ツール</span>
+                <button class="tool-btn active" data-tool="select" title="選択">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7 2l12 11.5-5.5 1.5 3.5 7-2.5 1-3.5-7L7 20V2z" />
+                    </svg>
+                </button>
+                <button class="tool-btn" data-tool="pen" title="ペン">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
+                    </svg>
+                </button>
+                <button class="tool-btn" data-tool="arrow" title="矢印">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
+                    </svg>
+                </button>
+                <button class="tool-btn" data-tool="eraser" title="消しゴム">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M16.24 3.56l4.95 4.94c.78.79.78 2.05 0 2.84L12 20.53a4.008 4.008 0 01-5.66 0L2.81 17c-.78-.79-.78-2.05 0-2.84l10.6-10.6c.79-.78 2.05-.78 2.83 0zM4.22 15.58l3.54 3.53c.78.79 2.04.79 2.83 0l3.53-3.53-4.95-4.95-4.95 4.95z" />
+                    </svg>
+                </button>
+            </div>
+
+            <div class="tool-group">
+                <span class="group-label">色</span>
+                <div class="color-picker">
+                    <button class="color-btn active" data-color="#ffffff" style="background-color: #ffffff;"
+                        title="白"></button>
+                    <button class="color-btn" data-color="#ffeb3b" style="background-color: #ffeb3b;"
+                        title="黄"></button>
+                    <button class="color-btn" data-color="#ff5722" style="background-color: #ff5722;"
+                        title="オレンジ"></button>
+                    <button class="color-btn" data-color="#e91e63" style="background-color: #e91e63;"
+                        title="ピンク"></button>
+                    <button class="color-btn" data-color="#9c27b0" style="background-color: #9c27b0;"
+                        title="紫"></button>
+                </div>
+            </div>
+
+            <div class="tool-group">
+                <span class="group-label">線の太さ</span>
+                <input type="range" id="line-width" min="2" max="10" value="3" class="line-width-slider">
+                <span id="line-width-value" class="line-width-value">3px</span>
+            </div>
+
+            <div class="tool-group">
+                <span class="group-label">操作</span>
+                <button class="tool-btn action-btn" data-action="undo" title="元に戻す">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12.5 8c-2.65 0-5.05.99-6.9 2.6L2 7v9h9l-3.62-3.62c1.39-1.16 3.16-1.88 5.12-1.88 3.54 0 6.55 2.31 7.6 5.5l2.37-.78C21.08 11.03 17.15 8 12.5 8z" />
+                    </svg>
+                </button>
+                <button class="tool-btn action-btn clear-btn" data-action="clear" title="すべてクリア">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z" />
+                    </svg>
+                </button>
+            </div>
+
+            <div class="tool-group">
+                <span class="group-label">アニメーション</span>
+                <button class="tool-btn" data-tool="waypoint" title="経路編集モード">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                    </svg>
+                </button>
+                <button class="tool-btn" data-tool="pass" title="パスモード（タップでパス先を指定）">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M2 12l5 5v-3h7v-4H7V7l-5 5zm18-5h-7v2h7v6h-7v2h7c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2z" />
+                    </svg>
+                </button>
+                <button class="tool-btn action-btn play-btn" data-action="play-animation" title="再生">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M8 5v14l11-7z" />
+                    </svg>
+                </button>
+                <button class="tool-btn action-btn" data-action="clear-paths" title="経路クリア">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+                    </svg>
+                </button>
+                <button class="tool-btn action-btn" data-action="reset-positions" title="スタート地点に戻す">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <main class="main-content">
+            <div class="field-container" id="field-container">
+                <canvas id="field-canvas"></canvas>
+                <canvas id="drawing-canvas"></canvas>
+                <div id="players-container"></div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>ドラッグでプレイヤーを移動 | 描画ツールでパスや動きを描画</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

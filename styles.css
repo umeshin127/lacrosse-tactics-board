@@ -1,0 +1,564 @@
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-bg: #0f1419;
+    --secondary-bg: #1a1f2e;
+    --accent-blue: #3b82f6;
+    --accent-red: #ef4444;
+    --accent-green: #22c55e;
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --glass-bg: rgba(30, 41, 59, 0.8);
+    --glass-border: rgba(148, 163, 184, 0.2);
+    --field-green: #2d5a27;
+    --field-line: #ffffff;
+    --shadow-glow: 0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+body {
+    font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--primary-bg);
+    color: var(--text-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* App Container */
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    padding: 1rem 0;
+    margin-bottom: 1rem;
+}
+
+.header h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+}
+
+/* Toolbar */
+.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    margin-bottom: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.tool-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    background: rgba(15, 20, 25, 0.5);
+    border-radius: 12px;
+}
+
+.group-label {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    padding: 0 0.5rem;
+    white-space: nowrap;
+}
+
+/* Tool Buttons */
+.tool-btn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--secondary-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 10px;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tool-btn:hover {
+    background: rgba(59, 130, 246, 0.2);
+    border-color: var(--accent-blue);
+    transform: translateY(-2px);
+}
+
+.tool-btn.active {
+    background: var(--accent-blue);
+    border-color: var(--accent-blue);
+    box-shadow: var(--shadow-glow);
+}
+
+/* Player Buttons - Blue Team */
+.player-btn.attack-blue {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+}
+
+.player-btn.midfield-blue {
+    background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+}
+
+.player-btn.defense-blue {
+    background: linear-gradient(135deg, #06b6d4, #0891b2);
+}
+
+.player-btn.ssdm-blue {
+    background: linear-gradient(135deg, #0ea5e9, #0369a1);
+}
+
+.player-btn.goalie-blue {
+    background: linear-gradient(135deg, #22d3ee, #06b6d4);
+}
+
+/* Player Buttons - Red Team */
+.player-btn.attack-red {
+    background: linear-gradient(135deg, #ef4444, #b91c1c);
+}
+
+.player-btn.midfield-red {
+    background: linear-gradient(135deg, #f97316, #c2410c);
+}
+
+.player-btn.defense-red {
+    background: linear-gradient(135deg, #ec4899, #be185d);
+}
+
+.player-btn.ssdm-red {
+    background: linear-gradient(135deg, #f43f5e, #be123c);
+}
+
+.player-btn.goalie-red {
+    background: linear-gradient(135deg, #10b981, #047857);
+}
+
+.player-btn .player-icon {
+    font-weight: 700;
+    font-size: 0.8rem;
+}
+
+.ball-btn {
+    background: linear-gradient(135deg, #fbbf24, #d97706);
+}
+
+.ball-btn .ball-icon {
+    font-size: 1rem;
+}
+
+/* Color Picker */
+.color-picker {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.color-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.color-btn:hover {
+    transform: scale(1.15);
+}
+
+.color-btn.active {
+    border-color: var(--text-primary);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Line Width Slider */
+.line-width-slider {
+    width: 80px;
+    accent-color: var(--accent-blue);
+}
+
+.line-width-value {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    min-width: 30px;
+}
+
+/* Action Buttons */
+.action-btn:hover {
+    background: rgba(59, 130, 246, 0.3);
+}
+
+.clear-btn:hover {
+    background: rgba(239, 68, 68, 0.3);
+    border-color: var(--accent-red);
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Field Container */
+.field-container {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    aspect-ratio: 1.8 / 1;
+    background: var(--field-green);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow:
+        0 0 0 4px rgba(255, 255, 255, 0.1),
+        0 20px 60px rgba(0, 0, 0, 0.5),
+        inset 0 0 100px rgba(0, 0, 0, 0.3);
+}
+
+.field-container canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#drawing-canvas {
+    z-index: 1;
+}
+
+#field-canvas {
+    z-index: 0;
+}
+
+#players-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Player Elements */
+.player {
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: grab;
+    pointer-events: auto;
+    transition: transform 0.1s ease, box-shadow 0.2s ease;
+    user-select: none;
+    transform: translate(-50%, -50%);
+}
+
+.player:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+    z-index: 100;
+}
+
+.player:active {
+    cursor: grabbing;
+    transform: translate(-50%, -50%) scale(1.15);
+}
+
+/* Blue Team Players */
+.player.attack-blue {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    border: 2px solid #60a5fa;
+    box-shadow: 0 2px 10px rgba(59, 130, 246, 0.5);
+    color: white;
+}
+
+.player.midfield-blue {
+    background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+    border: 2px solid #a78bfa;
+    box-shadow: 0 2px 10px rgba(139, 92, 246, 0.5);
+    color: white;
+}
+
+.player.defense-blue {
+    background: linear-gradient(135deg, #06b6d4, #0891b2);
+    border: 2px solid #22d3ee;
+    box-shadow: 0 2px 10px rgba(6, 182, 212, 0.5);
+    color: white;
+}
+
+.player.ssdm-blue {
+    background: linear-gradient(135deg, #0ea5e9, #0369a1);
+    border: 2px solid #38bdf8;
+    box-shadow: 0 2px 10px rgba(14, 165, 233, 0.5);
+    color: white;
+}
+
+.player.goalie-blue {
+    background: linear-gradient(135deg, #22d3ee, #06b6d4);
+    border: 2px solid #67e8f9;
+    box-shadow: 0 2px 10px rgba(34, 211, 238, 0.5);
+    color: white;
+    width: 42px;
+    height: 42px;
+}
+
+/* Red Team Players */
+.player.attack-red {
+    background: linear-gradient(135deg, #ef4444, #b91c1c);
+    border: 2px solid #f87171;
+    box-shadow: 0 2px 10px rgba(239, 68, 68, 0.5);
+    color: white;
+}
+
+.player.midfield-red {
+    background: linear-gradient(135deg, #f97316, #c2410c);
+    border: 2px solid #fb923c;
+    box-shadow: 0 2px 10px rgba(249, 115, 22, 0.5);
+    color: white;
+}
+
+.player.defense-red {
+    background: linear-gradient(135deg, #ec4899, #be185d);
+    border: 2px solid #f472b6;
+    box-shadow: 0 2px 10px rgba(236, 72, 153, 0.5);
+    color: white;
+}
+
+.player.ssdm-red {
+    background: linear-gradient(135deg, #f43f5e, #be123c);
+    border: 2px solid #fb7185;
+    box-shadow: 0 2px 10px rgba(244, 63, 94, 0.5);
+    color: white;
+}
+
+.player.goalie-red {
+    background: linear-gradient(135deg, #10b981, #047857);
+    border: 2px solid #34d399;
+    box-shadow: 0 2px 10px rgba(16, 185, 129, 0.5);
+    color: white;
+    width: 42px;
+    height: 42px;
+}
+
+.player.selected {
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+/* Ball */
+.ball {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #fbbf24, #f59e0b);
+    border: 2px solid #fcd34d;
+    box-shadow: 0 2px 10px rgba(251, 191, 36, 0.6);
+    cursor: grab;
+    pointer-events: auto;
+    transform: translate(-50%, -50%);
+    z-index: 50;
+}
+
+.ball:active {
+    cursor: grabbing;
+    transform: translate(-50%, -50%) scale(1.2);
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 1rem;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}
+
+/* Prevent touch behaviors that interfere with the app */
+html,
+body {
+    touch-action: manipulation;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Responsive - Tablet */
+@media (max-width: 1024px) {
+    .app-container {
+        padding: 0.5rem;
+    }
+
+    .header h1 {
+        font-size: 1.5rem;
+    }
+
+    .toolbar {
+        padding: 0.75rem;
+        gap: 0.5rem;
+    }
+
+    .field-container {
+        max-width: 100%;
+    }
+}
+
+/* Responsive - Mobile */
+@media (max-width: 768px) {
+    .app-container {
+        padding: 0.25rem;
+        gap: 0;
+    }
+
+    .header {
+        padding: 0.5rem 0;
+        margin-bottom: 0.5rem;
+    }
+
+    .header h1 {
+        font-size: 1.2rem;
+    }
+
+    .toolbar {
+        padding: 0.5rem;
+        gap: 0.4rem;
+        border-radius: 10px;
+        margin-bottom: 0.5rem;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .toolbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .tool-group {
+        padding: 0.3rem;
+        flex-shrink: 0;
+    }
+
+    .group-label {
+        display: none;
+    }
+
+    .tool-btn {
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+    }
+
+    .color-btn {
+        width: 24px;
+        height: 24px;
+    }
+
+    .line-width-slider {
+        width: 60px;
+    }
+
+    .main-content {
+        flex: 1;
+        min-height: 0;
+    }
+
+    .field-container {
+        border-radius: 8px;
+        max-width: 100%;
+    }
+
+    .player {
+        width: 30px;
+        height: 30px;
+        font-size: 0.7rem;
+    }
+
+    .player.goalie-blue,
+    .player.goalie-red {
+        width: 36px;
+        height: 36px;
+    }
+
+    .ball {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+/* Landscape mobile - maximize field area */
+@media (max-height: 500px) and (orientation: landscape) {
+    .header {
+        display: none;
+    }
+
+    .toolbar {
+        padding: 0.3rem;
+        gap: 0.3rem;
+        margin-bottom: 0.3rem;
+        border-radius: 8px;
+    }
+
+    .tool-btn {
+        width: 32px;
+        height: 32px;
+    }
+
+    .app-container {
+        padding: 0.25rem;
+    }
+
+    .field-container {
+        border-radius: 6px;
+    }
+}
+
+/* Small phone screens */
+@media (max-width: 400px) {
+    .tool-btn {
+        width: 32px;
+        height: 32px;
+    }
+
+    .player {
+        width: 26px;
+        height: 26px;
+        font-size: 0.6rem;
+        border-width: 1.5px;
+    }
+
+    .player.goalie-blue,
+    .player.goalie-red {
+        width: 32px;
+        height: 32px;
+    }
+
+    .ball {
+        width: 14px;
+        height: 14px;
+    }
+}
